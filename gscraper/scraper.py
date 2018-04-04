@@ -41,7 +41,7 @@ def get_all_imgage_urls_from_html( htmlString, limit=-1 ):
 
   return img_urls
 
-def download_images( imgURLs, target_directory="downloads", delay = 0 ):
+def download_images( imgURLs, target_directory = "downloads", delay = 0, start_index = 0 ):
 
   errorCount = 0
 
@@ -67,7 +67,7 @@ def download_images( imgURLs, target_directory="downloads", delay = 0 ):
           file_extension = ".jpg"
 
         # current image number
-        i_with_leading_zeros = ("{:0"+str(len(str(len(imgURLs))))+"}").format(i+1)
+        i_with_leading_zeros = ("{:0"+str(len(str(len(imgURLs))))+"}").format(start_index + i + 1)
 
         file_name = "image-" + i_with_leading_zeros
 
@@ -79,25 +79,25 @@ def download_images( imgURLs, target_directory="downloads", delay = 0 ):
         output_file.write(img)
         output_file.close()
 
-        print("completed ====> " + str(i + 1) + ". " + image_name)
+        print("completed ====> " + str(start_index + i + 1) + ". " + image_name)
 
     except HTTPError as e:
         errorCount += 1
-        print("HTTPError on image" + str(i + 1))
+        print("HTTPError on image " + str(start_index + i + 1))
         print(str(e))
 
     except URLError as e:
         errorCount += 1
-        print("URLError on image" + str(i + 1))
+        print("URLError on image " + str(start_index + i + 1))
         print(str(e))
 
     except IOError:
         errorCount += 1
-        print("IOError on image" + str(i + 1))
+        print("IOError on image " + str(start_index + i + 1))
 
     except ssl.CertificateError as e:
         errorCount += 1
-        print("CertificateError on image" + str(i + 1))
+        print("CertificateError on image " + str(start_index + i + 1))
         print(str(e))
 
     if int(delay) > 0:

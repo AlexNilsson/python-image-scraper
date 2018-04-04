@@ -24,7 +24,7 @@ with open(path.join(here, 'README.md')) as f:
 
 setup(
     name='gscraper',
-    version='0.1.1',
+    version='0.1.2',
     packages=find_packages(),
 
     install_requires=['setuptools>=28.8.0'],

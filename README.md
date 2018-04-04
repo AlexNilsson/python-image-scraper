@@ -10,7 +10,7 @@ pip install gscraper
 ```python
 from gscraper import scrapeImages
 
-scrapeImages(search_queries='nicolas cage', limit=5, folder_name='<query-string>', output_directory='downloads', delay=0 )
+scrapeImages(search_queries='nicolas cage', limit=5, sub_dir_name='<query-string>', output_directory='downloads', delay=0 )
 '''
 search_queries:     Comma separated <String> or <List>
 limit:              <Int> 0-100
@@ -26,7 +26,7 @@ delay:              <Int> Seconds, delay between download queries
 ```python
 from gscraper import scrapeImages
 
-scrapeImages( search_queries='query', limit=3 ):
+scrapeImages( search_queries='query', limit=3 )
 '''
 downloads/
 | query/
@@ -34,14 +34,14 @@ downloads/
 | | image-2
 | | image-3
 '''
-scrapeImages( search_queries='query', limit=1, folder_name='output' ):
+scrapeImages( search_queries='query', limit=1, sub_dir_name='output' )
 '''
 downloads/
 | output/
 | | image-1
 '''
 
-scrapeImages( search_queries=['one','two'], limit=2, output_directory='numbers' ):
+scrapeImages( search_queries=['one','two'], limit=2, output_directory='numbers' )
 '''
 numbers/
 | one/
@@ -50,5 +50,15 @@ numbers/
 | two/
 | | image-1
 | | image-2
+'''
+
+scrapeImages( search_queries=['one','two'], limit=2, sub_dir_name='output' )
+'''
+numbers/
+| output/
+| | image-1
+| | image-2
+| | image-3
+| | image-4
 '''
 ```
